@@ -1,0 +1,21 @@
+#define TRIG 8
+#define ECHO 9
+
+void setup() {
+  pinMode(TRIG, OUTPUT);
+    pinMode(ECHO, INPUT);
+      }
+
+      void loop() {
+        digitalWrite(TRIG, LOW);
+	  delayMicroseconds(2);
+	    digitalWrite(TRIG, HIGH);
+	      delayMicroseconds(10);
+	        digitalWrite(TRIG, LOW);
+
+		  long distance = pulseIn(ECHO, HIGH)/58.2;
+
+		    if(distance < 20){
+		        tone(12,392, 20);
+			  }
+			  }
