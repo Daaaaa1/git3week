@@ -10,31 +10,31 @@ long debounceDelay = 50;
 
 void setup() {
   pinMode(buttonPin,INPUT);
-    pinMode(2,OUTPUT);
-      pinMode(3,OUTPUT);
-        pinMode(4,OUTPUT);
-	  pinMode(5,OUTPUT);
+  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+}
+
+void loop() {
+  int reading = digitalRead(buttonPin);
+  if(reading != lastButtonState){
+     lastDebounceTime = millis();
 	  }
+  if((millis()-lastDebounceTime)>debounceDelay){
+     if(reading != buttonState){
+        buttonState = reading;
+	if(buttonState == HIGH){
+	   num++;
+	 }
+       }
+     }
 
-	  void loop() {
-	    int reading = digitalRead(buttonPin);
-	      if(reading != lastButtonState){
-	          lastDebounceTime = millis();
-		    }
-		      if((millis()-lastDebounceTime)>debounceDelay){
-		          if(reading != buttonState){
-			        buttonState = reading;
-				      if(buttonState == HIGH){
-				              num++;
-					            }
-						        }
-							  }
+  if(num> 15)num=0;
+  digitalWrite(2,num%2);
+  digitalWrite(3,(num>>1)%2);
+  digitalWrite(4,(num>>2)%2);
+  digitalWrite(5,(num>>3)%2);
 
-							    if(num> 15)num=0;
-							      digitalWrite(2,num%2);
-							        digitalWrite(3,(num>>1)%2);
-								  digitalWrite(4,(num>>2)%2);
-								    digitalWrite(5,(num>>3)%2);
-
-								      lastButtonState = reading;
-								      }
+  lastButtonState = reading;	
+}
