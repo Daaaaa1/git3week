@@ -66,13 +66,13 @@ void setup()
 
 void loop()                     // run over and over again
 {
-  getFingerprintIDez();
-  delay(50);            //don't ned to run this at full speed.
-
   digitalWrite(6, LOW);
   digitalWrite(7, LOW);
   digitalWrite(8, LOW);
   digitalWrite(9, LOW);
+  
+  getFingerprintIDez();
+  delay(50);            //don't ned to run this at full speed.
   
   while(true){
     if(finger.fingerID==1){
